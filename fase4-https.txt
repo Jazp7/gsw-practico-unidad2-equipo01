@@ -1,0 +1,13 @@
+1. ¿Por qué certbot no funciona para dulcehogar.local?
+   Respuesta: Certbot utiliza la Autoridad de Certificación Let's Encrypt, la cual requiere realizar una validación de dominio (a través de retornos de llamada HTTP/DNS) hacia un dominio público resoluble en Internet. dulcehogar.local es un dominio ficticio de ámbito local y no posee registros DNS ni direcciones IP públicas alcanzables desde la infraestructura de Let's Encrypt.
+
+2. ¿Qué diferencia hay entre un certificado autofirmado y uno firmado por mkcert?
+   Respuesta: Un certificado autofirmado común firma su clave pública con su propia clave privada sin una Autoridad Certificadora (CA) de respaldo en el sistema, lo que provoca que cualquier navegador muestre una advertencia explícita de riesgo de seguridad. Por otro lado, mkcert genera y registra localmente una Autoridad Certificadora Raíz de Confianza (rootCA) en la cadena de certificados del sistema operativo o navegador. Por ello, los certificados emitidos por mkcert son considerados válidos y seguros en el entorno local de desarrollo sin mostrar alertas.
+
+3. Reto: si desplegaran en un dominio público real (dulcehogar.com.sv), ¿qué cambiarían?
+   Respuesta:
+   - Reemplazar mkcert por Certbot (Let's Encrypt) para obtener certificados SSL/TLS reconocidos mundialmente de forma gratuita y automatizada.
+   - Configurar registros DNS de tipo A apuntando dulcehogar.com.sv a la dirección IP pública estática de la empresa o servidor VPS.
+   - Ajustar las directivas ServerName en los Virtual Hosts a dulcehogar.com.sv.
+   - Utilizar el puerto estándar 443 para HTTPS en lugar del puerto 8900.
+   - Configurar redirección automática de HTTP (puerto 80) hacia HTTPS (puerto 443).
