@@ -1,0 +1,23 @@
+1. ¿Qué muestra la página por defecto de Apache? Capturen pantalla.
+
+2. ¿Qué diferencia hay entre sites-available y sites-enabled?
+
+En sites-available se guadan los archivos de configuración de todos los sitios alojados en el servidor. En sites-enabled hay enlaces simbólicos que apunta hacia los archivos dentro de sites-available
+
+
+3. Ejecuten sudo apache2ctl configtest. ¿Qué reporta? ¿Por qué es importante antes de reini-
+ciar?
+
+Analiza la sintaxis de los archivos de configuración sin iniciar el servidor. Es importante antes de reiniciar ya que permite validar la configuracion de forma segura
+
+
+4. Reto: si Apache no arrancara, ¿qué 3 pasos seguirían para diagnosticar el problema?
+
+- Ejecutar chequeo de sintaxis con
+	- sudo apache2ctl configtest
+- Consultar el estado del servicio con systemctl
+	- Inspecciona el estado detallado del proceso en `systemd` para observar el motivo exacto del fallo en el arranque:
+	- sudo systemctl status apache2
+- Revisar los registros de eventos del sistema y de Apache
+	- Inspecciona los logs detallados de errores en tiempo real para obtener información detallada del problema
+	- sudo journalctl -u apache2 --no-pager -n 50
