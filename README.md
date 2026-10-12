@@ -39,5 +39,5 @@ Laboratorio 2/
 └── capturas/
     ├── fase2-apache-activo.png
     ├── fase3-curl-exitoso.png
-    └── fase4-https-sin-advertencia.png
+    └── fase4-https-sin-advertencia.jpg
 ```
