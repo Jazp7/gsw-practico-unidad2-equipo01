@@ -1,0 +1,25 @@
+1. ¿Los 2 vCPU y 4 GB de RAM son suficientes para el tráfico diario normal? ¿Y para el pico de 3,000 visitas? Calculen el factor pico aproximado
+
+R//Los 2 vCPU y 4 GB de RAM son adecuados para el tráfico diario normal de una PyME, pero colapsarían por falta de memoria ante un pico de 3,000 visitas
+concurrentes. Si se tiene un tráfico promedio de 300 visitas diarias, el factor pico aproximado es de 10x (3,000 / 300), se necesita una mejora
+en los recursos.
+
+2. ¿Recomendarían escalar vertical u horizontalmente para el pico? Justifiquen según costo, tiempo y presupuesto de una PyME.
+
+R//Recomendamos un escalamiento vertical temporal. Para una PyME con presupuesto y tiempo limitados, es mucho más rápido y económico 
+que el escalamiento horizontal, el cual exige configurar balanceadores de carga y sincronización de bases de datos.
+
+3. ¿Qué recurso vigilarían primero si el servidor empieza a responder con lentitud? Expliquen con base en los 4 recursos (CPU, RAM, disco, red).
+
+R//Vigilaríamos primero la RAM. Cuando un servidor web recibe muchas peticiones concurrentes, el consumo de memoria RAM es alto,
+lo que obliga al sistema a usar el disco duro como memoria virtual, lo que desploma el rendimiento y ralentiza el servidor
+
+4. Decisión del equipo: ¿nube o servidor local? Presenten una tabla comparativa con 4 criterios (costo inicial, escalabilidad, mantenimiento, control)
+
+R//
+| Criterio      | Servidor en la Nube                                  | Servidor Local (On-Premise)                                         |
+|---------------|------------------------------------------------------|---------------------------------------------------------------------|
+| Costo Inicial | Muy bajo (modelo operativo de pago mensual por uso). | Alto (inversión de capital en hardware, redes y energía).           |
+| Escalabilidad | Alta e inmediata (se ajustan recursos en minutos).   | Baja y lenta (requiere comprar, esperar e instalar piezas físicas). |
+| Mantenimiento | Bajo (el proveedor se encarga de fallos físicos).    | Alto (requiere personal técnico propio para gestionar el hardware). |
+| Control       | Medio/Alto (depende de las políticas del proveedor). | Total (acceso físico y absoluto sobre la seguridad y los datos).    |
