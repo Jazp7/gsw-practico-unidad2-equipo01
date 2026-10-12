@@ -1,0 +1,14 @@
+¿Que hace ProxyPass /api http://localhost:9000/api? Expliquen con sus propias palabras
+R// Hace una funcion como de intermediario, redirecciona el trafico que llega a Apache y lo reenvia hacia el backend interno. En otras palabras, cuando un usuario entra a dulcehogar.local/api, Apache en lugar de buscar archivos en su propia carpeta, le pide la información en secreto al servidor del puerto 9000 y se la muestra al usuario.
+
+
+¿Que diferencia hay entre ProxyPass y ProxyPassReverse?
+R// Mientras que ProxyPass se encarga de redireccionar las peticiones del usuario, ProxyPassReverse redirecciona las respuestas del servidor
+
+
+RETO: ¿Que pasaria si configtest falla? ¿Como lo depurarian entre todos?
+R// Por un lado puede haber error en la sintaxis, lo cual el propio comando arroja en la consola, en ese caso seria de revisar los archivos de configuracion, por otro lado puede haber error en los permisos y que la carpeta del servidor le pertenezca por ejemplo al root, lo cual se puede comprobar facilmente con ls -la /var/www y comprobar que en este caso la carpeta dulcehogar.local pertenezca a www-data, puede haber error en los puertos, puede que por ejemplo el puerto 80 este ocupado, para eso se puede comprobar que servicio esta usando dicho puerto con sudo ss -tlnp | grep :[PUERTO] y verificar que quien lo usa es apache2.
+
+
+¿Por que la captura del curl es la prueba de que las Unidades 1 y 2 estan conectadas?
+R// La unidad 1 (contenedores web) la podriamos representar como el backend interno, mientras que la unidad 2 (Servidores Web) se representa como Apache Server, siguiendo la logica antes explicada del ProxyPass y ProxyPassReverse.
